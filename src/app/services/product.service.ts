@@ -10,11 +10,17 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  apiUrl = "https://localhost:44314/api/products/getall"
+  apiUrl = "https://localhost:44314/api/";
 
   constructor(private httpClient:HttpClient) { }
 
   getProducts():Observable<ListResposeModel<Product>>{
-    return this.httpClient.get<ListResposeModel<Product>>(this.apiUrl);
+    let newPath = this.apiUrl + "products/getall"
+    return this.httpClient.get<ListResposeModel<Product>>(newPath);
+  }
+
+  getProductsByCategory(categoryId:number):Observable<ListResposeModel<Product>>{
+    let newPath = this.apiUrl + "products/getbycategory?categoryId="
+    return this.httpClient.get<ListResposeModel<Product>>(newPath);
   }
 }
