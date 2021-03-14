@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { ListResposeModel } from '../models/listResponseModel';
+import { ListResponseModel } from '../models/listResponseModel';
 import { Category } from '../models/category';
 
 
@@ -14,7 +14,7 @@ export class CategoryService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getCategories():Observable<ListResposeModel<Category>>{
-    return this.httpClient.get<ListResposeModel<Category>>(this.apiUrl);
+  getCategories():Observable<ListResponseModel<Category>>{
+    return this.httpClient.get<ListResponseModel<Category>>(this.apiUrl);
   }
 }
