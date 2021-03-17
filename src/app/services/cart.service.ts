@@ -13,13 +13,18 @@ export class CartService {
   addToCart(product:Product){
     let item = CartItems.find(c=>c.product.productId===product.productId);
     if(item){
-      item.quamtity += 1;
+      item.quantity+=1;
     }else{
       let cartItem = new CartItem();
       cartItem.product = product;
-      cartItem.quamtity = 1;
+      cartItem.quantity =1;
       CartItems.push(cartItem)
     }
+  }
+
+  removeFromCart(product:Product){
+    let item:CartItem = CartItems.find(c=>c.product.productId===product.productId);
+    CartItems.splice(CartItems.indexOf(item),1);
   }
 
   list():CartItem[]{
